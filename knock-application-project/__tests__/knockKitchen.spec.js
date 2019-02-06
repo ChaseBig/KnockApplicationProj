@@ -1,7 +1,8 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { configure, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16'
 import KnockKitchenDetail from '../knock-kitchen-detail';
 import { Flooring } from '../Flooring';
 import { SavedPhotos } from '../SavedPhotos';
@@ -23,6 +24,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect( tree ).toMatchSnapshot();
     });
 
+// Room Layout header
     it('should show info text for what to do in Room Layout container', () => {
         // Info text visible
         const wrapper = mount(<KnockKitchenDetail />);
@@ -30,6 +32,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect(wrapper.find({testID:'kitchen_info_text'}).text()).toBe('Take photos from opposite corners of the room');
     });
 
+// Saved Photos and Camera Launcher Icon Buttons
     it('tapping saved photos should launch saved photos pane when >1 photos exist',async () => {
         // Select the saved photos button
         const launchSavedPhotosViewer = jest.fn();
@@ -56,6 +59,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect(launchNativeCamera).toHaveBeenCalled();
     });
 
+// Add Comments and Comment Modal Launcher Icon Buttons
     it('should launch the comment modal when any comment icon is selected', () => {
         // Find and select a comment icon button
         const launchCommentModal = jest.fn();
@@ -72,6 +76,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect(launchAddCommentModal).toHaveBeenCalled();
     });
 
+// Floor Level Section 
     it('should allow user to select a floor level', () => {
         // selects the floor level
         const selectFloorLevel = jest.fn();
@@ -92,6 +97,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect(wrapper.state('floorLevel')).toBe('Lower');
     });
 
+// Walls and Paint Condition Section
     it('should allow user to select a condition for the walls and paint', () => {
         // selects the condition of the walls and paint
         const selectWallCondition = jest.fn();
@@ -101,7 +107,7 @@ describe('KnockKitchenDetail view suite', () => {
     });
 
     it('should show changed state of the selected wall condition', () => {
-        // checks that the wall condition state has changed
+        // checks the wall condition state change
         const wrapper = mount(<KnockKitchenDetail />);
         const text = wrapper.find({testID: 'selectedWallCondition'}).text();
         expect(text).toBeFalsy();
@@ -112,6 +118,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect(wrapper.state('wallCondition')).toBe('Excellent');
     });
 
+// Ceiling Type and Condition Section
     it('should allow user to select a type of ceiling', () => {
         // selects the type of ceiling
         const selectCeilingType = jest.fn();
@@ -121,7 +128,7 @@ describe('KnockKitchenDetail view suite', () => {
     });
 
     it('should show changed state of the selected ceiling type', () => {
-        // checks that the ceiling type state has changed
+        // checks the ceiling type state change
         const wrapper = mount(<KnockKitchenDetail />);
         const text = wrapper.find({testID: 'selectedCeilingType'}).text();
         expect(text).toBeFalsy();
@@ -133,7 +140,7 @@ describe('KnockKitchenDetail view suite', () => {
     });
 
     it('should allow user to select a ceiling condition', () => {
-        // selects the condition of the ceiling
+        // selects condition of the ceiling
         const selectCeilingCondition = jest.fn();
         const wrapper = mount(<Ceiling onPress={selectCeilingCondition} />);
         wrapper.find({testID: 'ceiling_condition_good'}).simulate('press')
@@ -141,7 +148,7 @@ describe('KnockKitchenDetail view suite', () => {
     });
 
     it('should show changed state of the selected ceiling condition', () => {
-        // checks that the ceiling condition state has changed
+        // checks the ceiling condition state change
         const wrapper = mount(<KnockKitchenDetail />);
         const text = wrapper.find({testID: 'selectedCeilingCondition'}).text();
         expect(text).toBeFalsy();
@@ -152,6 +159,7 @@ describe('KnockKitchenDetail view suite', () => {
         expect(wrapper.state('ceilingCondition')).toBe('Good');
     });
 
+// Flooring Type Section
     it('should allow user to select a type of flooring', () => {
         // selects the type of flooring
         const selectFloorType = jest.fn();
@@ -161,7 +169,7 @@ describe('KnockKitchenDetail view suite', () => {
     });
 
     it('should show changed state of the selected flooring type', () => {
-        // checks that the flooring type state has changed
+        // checks the flooring type state change
         const wrapper = mount(<KnockKitchenDetail />);
         const text = wrapper.find({testID: 'selectedFlooringType'}).text();
         expect(text).toBeFalsy();

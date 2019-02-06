@@ -1,4 +1,5 @@
 // detox text, can be run on iOS or Android
+/* eslint-env detox/detox */
 
 describe('Room Layout - Kitchen', () => {
     beforeEach(async () => {
@@ -17,7 +18,7 @@ describe('Room Layout - Kitchen', () => {
 
     it('should launch photo viewer when I tap the saved photos button', async () => {
         await element(by.id('{2}_of_photos')).tap();
-        await expect(element(by.id('saved_photos_container'))).toBeVisible();
+        await expect(element(by.id('view_saved_photos_container'))).toBeVisible();
         await expect(element(by.text('2 Photos'))).toBeVisible();
     });
 

@@ -80,13 +80,7 @@ typings/
 
 *.properties
 
-*.bat
-
-*.gradle
-
 knock-application-project/.watchmanconfig
-
-knock-application-project/android/app/BUCK
 
 *.pro
 
@@ -96,30 +90,18 @@ knock-application-project/android/app/BUCK
 
 *.xcent
 
-*.dat
-
-*.yaml
-
-*.sh
-
 *.LinkFileList
 
 *.LinkFileList
-
-*.db
-
-*.xcbuild
 
 *.a
 
 *.h-3H70ZFU5NMOGL
 
-*.json
-
 package-lock.json
 
 *.lock
 
-*.pcm
-
 *.timestamp
+
+*.pcm
