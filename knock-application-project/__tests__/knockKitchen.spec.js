@@ -1,8 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { configure, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme';
 import KnockKitchenDetail from '../knock-kitchen-detail';
 import { Flooring } from '../Flooring';
 import { SavedPhotos } from '../SavedPhotos';
@@ -10,6 +9,7 @@ import { CameraLauncher } from '../CameraLauncher';
 import { Comments } from '../Comments';
 import { FloorLevel } from '../FloorLevel';
 import { WallsAndPaint } from '../WallsAndPaint';
+import "babel-polyfill";
 
 describe('KnockKitchenDetail view suite', () => {
     beforeEach(async () => {

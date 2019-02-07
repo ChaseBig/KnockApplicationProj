@@ -8,23 +8,55 @@
     "knock"
   ],
   "dependencies": {
-    "react": "16.0.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "babel-core": "^6.26.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-native": "^0.58.4"
   },
   "devDependencies": {
-    "babel-jest": "21.2.0",
-    "babel-preset-react-native": "4.0.0",
+    "babel-jest": "24.1.0",
+    "babel-preset-react-native": "4.0.1",
     "detox": "^10.0.5",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "eslint-plugin-detox": "^1.0.0",
     "jest": "^24.1.0",
-    "react-test-renderer": "16.0.0-beta.5"
+    "react-test-renderer": "16.8.1"
   },
   "scripts": {
+    "test": "jest",
+    "setupTestFrameworkScriptFile": "jest --config ./__tests__/setup/jest.config.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test:e2e:debug": "detox test -c ios.sim.debug",
     "test:e2e:debug:build": "detox build -c ios.sim.debug",
     "test-ios": "detox build --configuration ios.sim.debug && detox test --configuration ios.sim.debug",
     "test-android": "detox build --configuration android.emu.debug && detox test --configuration android.emu.debug -l verbose"
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "react-native",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/setup/setupJest.js",
+      "<rootDir>/__tests__/setup/babel.config.js",
+      "<rootDir>/__tests__/setup/jest-transformer.js",
+      "<rootDir>/__tests__/setup/jest.config.js",
+      "<rootDir>/__tests__/setup/setupEnzyme.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/__tests__/setup/babel.config.js",
+      "<rootDir>/__tests__/setup/jest-transformer.js",
+      "<rootDir>/__tests__/setup/jest.config.js",
+      "<rootDir>/__tests__/setup/setupJest.js",
+      "<rootDir>/__tests__/setup/setupEnzyme.js"
+    ],
+    "testMatch": [
+      "**/*.spec.js"
+    ]
   },
   "detox": {
     "test-runner": "jest",

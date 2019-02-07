@@ -1,5 +1,5 @@
 {
   "setupTestFrameworkScriptFile": "./init.js",
-  "testMatch": ["**/__tests__/**/*.js?(x)", "**/?(*.)(e2e).js?(x)"],
+  "testMatch": ["<rootDir>/__tests__/*spec.js?(x)", "<rootDir>/e2e/*spec.js?(x)"],
   "testEnvironment": "node"
 }
